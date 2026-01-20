@@ -113,9 +113,9 @@ export default function Page() {
           />
         </div>
 
-        <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c] lg:min-w-0'>
-          <section className='relative flex-1 overflow-hidden'>
-            <Canvas camera={{ position: [-20,21,21], fov: 35 }}>
+        <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c] lg:min-w-0 h-[40%] lg:h-full'>
+          <section className='relative flex-1 min-h-0 overflow-hidden'>
+            <Canvas className='min-h-full min-w-full' camera={{ position: [-20,21,21], fov: 35 }}>
             
 
               <Floor />
