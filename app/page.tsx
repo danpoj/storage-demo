@@ -115,9 +115,9 @@ export default function Page() {
 
         <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c]'>
           <section className='relative flex-1 overflow-hidden'>
-            <Canvas camera={{ position: [0, 9, 20], fov: 35 }}>
-              {/* <color attach='background' args={['#0c1c2e']} /> */}
+            <Canvas camera={{ position: [-20,21,21], fov: 35 }}>
             
+
               <Floor />
               {inventory.map((record) => {
                 const sector = sectors.find((entry) => entry.id === record.sectorId)!
@@ -142,13 +142,23 @@ export default function Page() {
               <Environment preset='city' />
             </Canvas>
             <div className='pointer-events-none absolute bottom-4 right-4 text-right text-slate-300'>
-              <p className='font-semibold text-[12px] font-bold'>금호타이어</p>
+              <p className='text-[12px] font-bold'>금호타이어</p>
               <p className='text-[11px] font-semibold'>금호타이어 창고 실시간 재고</p>
               <p className='text-[11px] text-slate-400'>
                 5번부터 16번 섹터까지 타이어를 직선으로 늘어선 랙과 층마다 타이어가 실려 있는 구성으로 보여줍니다.
               </p>
               <p className='text-[11px] text-slate-400'>각 섹터를 클릭하면 재고 변화가 실시간으로 반영됩니다.</p>
-            
+            </div>
+
+            <div className='absolute top-4 left-4 flex max-h-40 w-[400px] flex-col gap-2 overflow-y-auto p-3 text-[10px] z-50'>
+              <p className='text-[11px] uppercase tracking-[0.3em] text-slate-400 pl-1.5'>최근 기록</p>
+              <ul className='space-y-1 text-[11px] text-slate-200'>
+                {activityLog.map((entry, index) => (
+                  <li key={`overlay-log-${index}`} className='px-2 py-1'>
+                    {entry}
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         </div>

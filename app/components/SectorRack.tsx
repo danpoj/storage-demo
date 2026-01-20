@@ -2,7 +2,7 @@
 
 import { Html } from '@react-three/drei'
 import { useEffect, useState } from 'react'
-import type { ThreeEvent } from '@react-three/fiber'
+import { useThree, type ThreeEvent } from '@react-three/fiber'
 import { SectorConfig, InventoryRecord } from '@components/types'
 
 const rackPostPositions: [number, number, number][] = [

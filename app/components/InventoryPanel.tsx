@@ -25,12 +25,11 @@ export const InventoryPanel = ({
   setMovementAmount,
   handleMovement,
   setSelectedSectorId,
-  activityLog,
   totalStock,
   selectedSectorId,
   sectors,
 }: InventoryPanelProps) => (
-  <div className='space-y-5 text-[11px] text-slate-100' style={{ fontFamily: 'var(--font-geist-mono)' }}>
+  <div className='space-y-5 text-[11px] text-slate-100 pb-20' style={{ fontFamily: 'var(--font-geist-mono)' }}>
     <div className='space-y-1'>
       {/* <div className='flex items-center justify-between border-b border-slate-700 pb-1 text-[10px] uppercase tracking-[0.45em] text-slate-400'>
         <span>현재 선택</span>
@@ -68,14 +67,24 @@ export const InventoryPanel = ({
         <button
           type='button'
           onClick={() => handleMovement('in', movementAmount, selectedSectorId)}
-          className='flex-1 bg-[#0d172a] px-3 py-2 text-[11px] font-semibold text-white cursor-pointer hover:opacity-70'
+          className='flex-1 px-3 py-2 text-[11px] font-semibold text-white cursor-pointer transition hover:brightness-110'
+          style={{
+            background: '#234074',
+            boxShadow: '0 2px 8px 0 rgba(50,100,255,0.18), 0 1px 2px 0 rgba(80,160,255,0.18) inset, 0 0.5px 1px 0 #3e5f9b inset',
+            border: '1px solid #305088'
+          }}
         >
           입고 처리
         </button>
         <button
           type='button'
           onClick={() => handleMovement('out', movementAmount, selectedSectorId)}
-          className='flex-1 bg-[#0d172a] px-3 py-2 text-[11px] font-semibold text-white cursor-pointer hover:opacity-70'
+          className='flex-1 px-3 py-2 text-[11px] font-semibold text-white cursor-pointer transition hover:brightness-110'
+          style={{
+            background: '#5d2339',
+            boxShadow: '0 2px 8px 0 rgba(182,50,90,0.18), 0 1px 2px 0 rgba(200,40,80,0.16) inset, 0 0.5px 1px 0 #813050 inset',
+            border: '1px solid #86234c'
+          }}
         >
           출고 처리
         </button>
@@ -112,7 +121,7 @@ export const InventoryPanel = ({
         })}
       </div>
     </div>
-
+{/* 
     <div className='space-y-2 text-[10px] text-slate-400'>
       <p className='uppercase tracking-[0.3em]'>최근 기록</p>
       <ul className='space-y-1'>
@@ -122,6 +131,6 @@ export const InventoryPanel = ({
           </li>
         ))}
       </ul>
-    </div>
+    </div> */}
   </div>
 )

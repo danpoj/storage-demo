@@ -32,3 +32,13 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
