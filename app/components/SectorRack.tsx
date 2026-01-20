@@ -128,8 +128,14 @@ export const SectorRack = ({ sector, record, selected, onSelect }: SectorRackPro
           <planeGeometry args={[2.6, 1]} />
           <meshStandardMaterial color='#020617' opacity={0.95} transparent />
         </mesh>
-        <Html position={[0, 0, 0.02]} transform className='pointer-events-none select-none'>
-          <div className='w-[180px] rounded-lg border border-white/20 bg-slate-900/90 px-3 py-1 text-center font-semibold uppercase text-white aspect-video flex items-center justify-center flex-col'>
+        <Html position={[0, 0, 0.02]} transform className='cursor-pointer'>
+          <div
+            onClick={() => onSelect(sector.id)}
+            onPointerDown={(event) => event.stopPropagation()}
+            className={`w-[180px] rounded-lg border ${
+              selected ? 'border-amber-300 bg-amber-500/20' : 'border-white/20 bg-slate-900/90'
+            } px-3 py-1 text-center font-semibold uppercase text-white aspect-video flex items-center justify-center flex-col`}
+          >
             Sector {sector.id}
             <div className='mt-1 text-lg font-semibold leading-snug text-emerald-300'>
               재고 {record.stock}
