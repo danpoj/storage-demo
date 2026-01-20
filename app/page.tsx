@@ -7,29 +7,24 @@ import { InventoryPanel } from '@components/InventoryPanel'
 import { SectorRack } from '@components/SectorRack'
 import { InventoryRecord, MovementType, SectorConfig } from '@components/types'
 
-const baseSectorPalette: Omit<SectorConfig, 'position'>[] = [
-  { id: 5, label: 'Sector 5', capacity: 180, color: '#feb47b' },
-  { id: 6, label: 'Sector 6', capacity: 190, color: '#ff7e5f' },
-  { id: 7, label: 'Sector 7', capacity: 200, color: '#ffd166' },
-  { id: 8, label: 'Sector 8', capacity: 210, color: '#8dd7ff' },
-  { id: 9, label: 'Sector 9', capacity: 200, color: '#64c7ff' },
-  { id: 10, label: 'Sector 10', capacity: 210, color: '#9d7cff' },
-  { id: 11, label: 'Sector 11', capacity: 220, color: '#ec9f05' },
-  { id: 12, label: 'Sector 12', capacity: 200, color: '#38c1b9' },
-  { id: 13, label: 'Sector 13', capacity: 190, color: '#52b69a' },
-  { id: 14, label: 'Sector 14', capacity: 205, color: '#4facfe' },
-  { id: 15, label: 'Sector 15', capacity: 215, color: '#4d9dff' },
-  { id: 16, label: 'Sector 16', capacity: 230, color: '#f37735' },
-]
+const palette = ['#feb47b', '#ff7e5f', '#ffd166', '#8dd7ff', '#64c7ff', '#9d7cff', '#ec9f05', '#38c1b9', '#52b69a', '#4facfe', '#4d9dff', '#f37735']
+const totalSectors = 28
+const columns = 7
+const sectorIds = Array.from({ length: totalSectors }, (_, index) => 5 + index)
 
-const sectors: SectorConfig[] = baseSectorPalette.map((sector, index) => {
-  const columns = 4
+const sectors: SectorConfig[] = sectorIds.map((id, index) => {
   const row = Math.floor(index / columns)
   const column = index % columns
-  const x = column * 5 - 7.5
-  const z = row * 4 - 4
+  const color = palette[index % palette.length]
+  const capacity = 180 + (index % 6) * 5
+  const x = column * 4.4 - (columns / 2 - 0.5) * 4.4
+  const z = row * 4.6 - 6.9
+
   return {
-    ...sector,
+    id,
+    label: `Sector ${id}`,
+    capacity,
+    color,
     position: [x, 0, z],
   }
 })
@@ -115,7 +110,7 @@ export default function Page() {
 
         <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c] lg:min-w-0 h-[40%] lg:h-full'>
           <section className='relative flex-1 min-h-0 overflow-hidden'>
-            <Canvas className='min-h-full min-w-full' camera={{ position: [-20,21,21], fov: 35 }}>
+            <Canvas className='min-h-full min-w-full' camera={{ position: [-26,28,28], fov: 35 }}>
             
 
               <Floor />
