@@ -1,7 +1,7 @@
 'use client'
 
 import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls, Html } from '@react-three/drei'
+import { Environment, OrbitControls } from '@react-three/drei'
 import { useState } from 'react'
 import { InventoryPanel } from '@components/InventoryPanel'
 import { SectorRack } from '@components/SectorRack'
