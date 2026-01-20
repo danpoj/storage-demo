@@ -1,11 +1,12 @@
 'use client'
 
 import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Environment, OrbitControls, Html } from '@react-three/drei'
 import { useState } from 'react'
 import { InventoryPanel } from '@components/InventoryPanel'
 import { SectorRack } from '@components/SectorRack'
 import { InventoryRecord, MovementType, SectorConfig } from '@components/types'
+import * as THREE from 'three'
 
 const palette = ['#feb47b', '#ff7e5f', '#ffd166', '#8dd7ff', '#64c7ff', '#9d7cff', '#ec9f05', '#38c1b9', '#52b69a', '#4facfe', '#4d9dff', '#f37735']
 const totalSectors = 28
@@ -42,11 +43,37 @@ const createInitialInventory = () =>
   })
 
 const Floor = () => (
-  <mesh rotation-x={-Math.PI / 2} position={[0, -0.01, 0]}>
-    <planeGeometry args={[60, 40]} />
-    <meshStandardMaterial color='#000' />
-  </mesh>
+  <group>
+    {/* 바닥 */}
+    <mesh rotation-x={-Math.PI / 2} position={[0, -0.01, 0]}>
+      <planeGeometry args={[60, 40]} />
+      <meshStandardMaterial color="#000" />
+    </mesh>
+    {/* 얇고 90도 반시계 방향(왼쪽)으로 회전된 하얀 화살표 */}
+    <mesh rotation={[-Math.PI/2, 0, 0]} position={[-28, 0.001, 0]}>
+      <shapeGeometry
+        args={[
+          (() => {
+            // 얇은 좌향 화살표
+            const shape = new THREE.Shape()
+            // 몸통을 더 얇게, 머리도 날렵하게
+            shape.moveTo(-5, -0.7)
+            shape.lineTo(1.5, -0.7)
+            shape.lineTo(1.5, -2)
+            shape.lineTo(4, 0)
+            shape.lineTo(1.5, 2)
+            shape.lineTo(1.5, 0.7)
+            shape.lineTo(-2, 0.7)
+            shape.lineTo(-2, -0.7)
+            return shape
+          })(),
+        ]}
+      />
+      <meshStandardMaterial color="#fff" transparent opacity={0.9} />
+    </mesh>
+  </group>
 )
+
 
 export default function Page() {
   const [inventory, setInventory] = useState<InventoryRecord[]>(createInitialInventory())
@@ -110,7 +137,7 @@ export default function Page() {
 
         <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c] lg:min-w-0 h-[40%] lg:h-full'>
           <section className='relative flex-1 min-h-0 overflow-hidden'>
-            <Canvas className='min-h-full min-w-full' camera={{ position: [-26,28,28], fov: 35 }}>
+            <Canvas className='min-h-full min-w-full' camera={{ position: [-42,44,44], fov: 35 }}>
             
 
               <Floor />
@@ -132,7 +159,7 @@ export default function Page() {
                 enableDamping
                 dampingFactor={0.1}
                 maxPolarAngle={Math.PI / 2.1}
-                minPolarAngle={Math.PI / 4}
+                // minPolarAngle={Math.PI / 4}
               />
               <Environment preset='city' />
             </Canvas>
