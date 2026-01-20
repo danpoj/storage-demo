@@ -95,7 +95,7 @@ export default function Page() {
   return (
     <div className='h-screen overflow-hidden bg-[#030b1b] text-white'>
       <div className='flex h-full flex-col gap-4 px-4 py-4 text-sm lg:flex-row lg:px-6 lg:py-6'>
-        <div className='flex h-full w-full flex-col gap-4 overflow-y-auto border border-white/5 bg-[#050b1a] p-4 lg:h-screen lg:w-1/3'>
+        <div className='flex h-full w-full flex-col gap-4 overflow-y-auto border border-white/5 bg-[#050b1a] p-4 lg:h-screen lg:min-h-[calc(100vh-3rem)] lg:w-full lg:max-w-[32%]'>
           <div className='text-xs uppercase tracking-[0.5em] text-slate-400'>금호타이어</div>
           <InventoryPanel
             inventory={inventory}
@@ -113,7 +113,7 @@ export default function Page() {
           />
         </div>
 
-        <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c]'>
+        <div className='flex flex-1 flex-col border border-white/10 bg-linear-to-b from-[#020617] to-[#03142c] lg:min-w-0'>
           <section className='relative flex-1 overflow-hidden'>
             <Canvas camera={{ position: [-20,21,21], fov: 35 }}>
             
