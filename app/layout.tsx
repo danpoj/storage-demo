@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: '금호타이어 창고 3D 재고 관리',
+  title: '금호타이어 창고 재고 관리',
   description: 'react-three/fiber 기반 금호타이어 창고 입출고 재고 시뮬레이터',
 }
 
