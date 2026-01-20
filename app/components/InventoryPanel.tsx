@@ -102,8 +102,8 @@ export const InventoryPanel = ({
               key={`sidebar-${sector.id}`}
               type='button'
               onClick={() => setSelectedSectorId(sector.id)}
-            className={`flex w-full flex-col px-3 py-2 text-left transition ${
-              selectedSectorId === sector.id ? 'bg-slate-900/40' : 'bg-transparent'
+            className={`flex w-full flex-col px-3 py-2 text-left cursor-pointer hover:bg-slate-800/40 ${
+              selectedSectorId === sector.id ? 'bg-slate-800/40' : 'bg-transparent'
             }`}
             >
               <div className='flex items-center justify-between text-[11px]'>
