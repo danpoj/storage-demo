@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #030b1b;
@@ -24,7 +24,6 @@ html {
 body {
   background: radial-gradient(circle at top, #16233f, #030b1b 65%);
   color: var(--foreground);
-  font-family: var(--font-geist-mono), 'Noto Sans KR', system-ui, sans-serif;
   height: 100%;
   overflow: hidden;
   user-select: none;
